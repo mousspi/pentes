@@ -1,7 +1,7 @@
 using CSV, DataFrames, DelaunayTriangulation, LinearAlgebra, CairoMakie
 
 # 1. Chargement du nuage initial
-df = CSV.read("nuage.csv", DataFrame; delim=';')
+df = CSV.read("Pts CSV contact 13216.csv", DataFrame; delim=';')
 X = [Tuple(row) for row in eachrow(df)]  # (x, y, z)
 xy = [(x, y) for (x, y, z) in X]
 tri = DelaunayTriangulation.delaunay(xy)
@@ -40,7 +40,7 @@ end
 
 # 5. Sauvegarde dans un fichier CSV
 df_edges = DataFrame(edge_points)
-CSV.write("arêtes_avec_pentes.csv", df_edges)
+#CSV.write("arêtes_avec_pentes.csv", df_edges)
 
 # 6. Visualisation 3D avec couleurs
 x = df_edges.x
